@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import storage from './services/storage';
 import jobsStorage from './services/jobs-storage';
-import styles from './../sass/popup.sass';
+// import styles from './../sass/popup.sass';
 
-let app = new Vue({
+new Vue({
     el: '#popup',
     data: {
         jobs: jobsStorage.getUnreadJobs(),

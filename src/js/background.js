@@ -12,8 +12,9 @@ if(jobsStorage.getUnreadJobs().length > 0) {
 
 // enable fetching on first install
 if (config.getIsFetchingEnabled() === null) {
-  config.setIsFetchingEnabled(true);
-  config.setPlayNotificationSound(true);
+    config.setIsFetchingEnabled(true);
+    config.setPlayNotificationSound(true);
+    config.setShowNotificationPopup(true);
 }
 
 // initialize jobs fetching

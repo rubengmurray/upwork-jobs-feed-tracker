@@ -4,7 +4,8 @@ import jobsAlarm from './services/jobs-alarm';
 import storage from './services/storage';
 import badge from './services/badge';
 import config from './services/config';
-import styles from './../sass/options.sass';
+// import styles from './../sass/options.sass';
+// import dayjs from 'dayjs';
 import moment from 'moment';
 
 Vue.filter('timeAgo', value => {
@@ -57,13 +58,17 @@ Vue.filter('money_human', value => {
 
 new Vue({
     el: '#options',
+    // render: function(createElement) {
+    //     return createElement(hello)
+    // },
     data: {
         isFetchingEnabled: config.getIsFetchingEnabled(),
         jobs: jobsStorage.getAll(),
         unreadJobs: jobsStorage.getUnreadJobs(),
         auth: storage.get('auth', true),
         fetchInterval: config.getInterval(),
-        playNotificationSound: config.getPlayNotificationSound()
+        playNotificationSound: config.getPlayNotificationSound(),
+        showNotificationPopup: config.getShowNotificationPopup()
     },
     created() {
         window.addEventListener('storage', (e) => {
@@ -88,11 +93,13 @@ new Vue({
         'playNotificationSound': function(value) {
             config.setPlayNotificationSound(value);
         },
+        'showNotificationPopup': function(value) {
+            config.setShowNotificationPopup(value);
+        },
         'isFetchingEnabled': function(value) {
             config.setIsFetchingEnabled(value);
-            // console.log(JSON.parse(config.getIsFetchingEnabled()))
 
-            if (! JSON.parse(config.getIsFetchingEnabled())) {
+            if (!JSON.parse(config.getIsFetchingEnabled())) {
                 jobsAlarm.destroy();
             } else {
                 jobsAlarm.create(config.getInterval());
