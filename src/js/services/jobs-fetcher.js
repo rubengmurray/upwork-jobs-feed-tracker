@@ -48,15 +48,17 @@ export default {
             if(freshJobs.length > 0) {
                 this.removeOldNotifications();
 
-                chrome.notifications.create('freshJobs-' + ++notifications, {
-                    type: 'basic',
-                    iconUrl: './notification-icon.png',
-                    title: 'You got ' + freshJobs.length + ' new jobs!',
-                    message: "Don't miss your chance",
-                    buttons: [{
-                        title: "Click here to take a look"
-                    }]
-                });
+                if (!!JSON.parse(config.getShowNotificationPopup())) {
+                    chrome.notifications.create('freshJobs-' + ++notifications, {
+                        type: 'basic',
+                        iconUrl: './notification-icon.png',
+                        title: 'You got ' + freshJobs.length + ' new jobs!',
+                        message: "Don't miss your chance",
+                        buttons: [{
+                            title: "Click here to take a look"
+                        }]
+                    });
+                }
 
                 if(!!JSON.parse(config.getPlayNotificationSound())) {
                     const sound = new Audio('notification.mp3');

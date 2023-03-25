@@ -27,6 +27,13 @@ module.exports = {
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin()
     ],
+    // resolve: {
+    //     alias: {
+    //         vue: 'vue/dist/vue.runtime.js'
+    //         // npm i vue@csp
+    //         // npm i vue@2.6.14
+    //     },
+    // },
     module: {
         loaders: [
             {

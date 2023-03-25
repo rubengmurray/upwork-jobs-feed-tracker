@@ -35,10 +35,24 @@ export default {
         return JSON.parse(localStorage.getItem('isFetchingEnabled'));
     },
     /**
-     * Getter for isFetchingEnabed param
-     * @returns {boolean}
+     * Setter for isFetchingEnabed param
+     * @returns {void}
      */
     setIsFetchingEnabled(value) {
-        return localStorage.setItem('isFetchingEnabled', JSON.parse(value));
-    }
+        localStorage.setItem('isFetchingEnabled', JSON.parse(value));
+    },
+    /**
+     * Getter for playNotificationSound flag
+     * @returns {boolean}
+     */
+    getShowNotificationPopup() {
+        return JSON.parse(localStorage.getItem('showNotificationPopup'));
+    },
+    /**
+     * Setter for showNotificationPopup flag
+     * @returns {void}
+     */
+    setShowNotificationPopup(value) {
+        localStorage.setItem('showNotificationPopup', JSON.parse(+value));
+    },
 }
